@@ -1,0 +1,10 @@
+{
+  "name": "shulte-game",
+  "license": "MIT",
+  "scripts": {
+    "start": "servor ./public"
+  },
+  "devDependencies": {
+    "servor": "^4.0.2"
+  }
+}

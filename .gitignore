@@ -1,0 +1,4 @@
+node_modules
+yarn*.log
+npm*.log
+package.lock # no npm install, petty mortals! Use yarn or else. But I'm a comment, not a cop.
