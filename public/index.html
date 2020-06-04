@@ -9,35 +9,9 @@
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body>
-  <div id="app" class="grid grid-cols-5 text-2xl font-bold"></div>
+    <div id="app"></div>
 
-  <script type="module">
-    import { app, h } from 'https://unpkg.com/hyperapp';
-    import 'https://www.unpkg.com/lodash@4.17.15/lodash.js';
-
-    app({
-      node: document.getElementById('app'),
-      init: {
-        numbers: _.shuffle(Array.from({ length: 25 }, (empty, index) => index + 1)),
-      },
-      view: (state) => {
-        const children = state.numbers.map((number) => h(
-          'div',
-          {
-            class: "border border-black flex items-center justify-center",
-            style: {
-              height: "calc(100vw / 5)",
-            },
-          },
-          number,
-        ));
-        const props = {}
-
-
-        return h('div', props, children);
-      }
-    });
-  </script>
+  <script type="module" src="./main.js"></script>
 </body>
 </html>
 
