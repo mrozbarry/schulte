@@ -16,7 +16,7 @@ app({
         errors: 0,
       }
     })),
-    currentNumber: 25,
+    currentNumber: 1,
     numberToHighlight: null,
     view: 'game',
   },
