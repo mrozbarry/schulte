@@ -8,7 +8,7 @@ const totalTime = (state) => {
   }, 0);
 }
 
-const totalError = (state) => {
+const totalErrors = (state) => {
   return state.numbers.reduce((total, number) => {
     return total + number.errors;
   }, 0);
