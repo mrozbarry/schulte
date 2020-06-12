@@ -23,7 +23,9 @@ export const end = (state) => h('div', {},
         [`Total time: ${totalTime(state)/1000}`],
     ),
     h('h1', {}, `Total errors: ${totalErrors(state)}`),
-    state.numbers.map(number => {
+    state.numbers.sort((a, b) => {
+      return a.number - b.number;
+    }).map(number => {
       return h(
         'div', 
         {}, 
