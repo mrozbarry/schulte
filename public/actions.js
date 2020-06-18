@@ -6,7 +6,6 @@ export const OnTileClick = (state, clickedTile) => {
   }
 
   clickedTile.time = Date.now() - state.previousTime;
-  console.log(clickedTile);
   state.previousTime = Date.now();
 
   if (clickedTile.number === 25) {
@@ -22,17 +21,23 @@ export const OnTileClick = (state, clickedTile) => {
   };
 };
 
-export const resetGame = (state) => ({
-  ...state, 
-  previousTime: Date.now(),
-  numbers: _.shuffle(Array.from({ length: 25 }, (empty, index) => {
-    return {
-      number: index + 1,
-      time: null,
-      errors: 0,
+export const resetGame = (state) => {
+    const gridSize = 5
+    const totalCells = Math.pow(gridSize, 2)
+    return { 
+      ...state, 
+      previousTime: Date.now(),
+      numbers: _.shuffle(Array.from({ length: totalCells }, (empty, index) => {
+        return {
+          number: index + 1,
+          time: null,
+          errors: 0,
+        }
+      })),
+      currentNumber: 1,
+      numberToHighlight: null,
+      view: 'game',
     }
-  })),
-  currentNumber: 1,
-  numberToHighlight: null,
-  view: 'game',
-});
+};
+
+export const StartGame = resetGame;

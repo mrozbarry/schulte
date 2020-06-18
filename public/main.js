@@ -3,6 +3,7 @@ import 'https://www.unpkg.com/lodash@4.17.15/lodash.js';
 
 import { game } from './views/game.js';
 import { end } from './views/end.js';
+import { start } from './views/start.js';
 
 app({
   node: document.getElementById('app'),
@@ -18,14 +19,15 @@ app({
     })),
     currentNumber: 1,
     numberToHighlight: null,
-    view: 'game',
+    view: 'start',
   },
 
   view: (state) => {
     switch (state.view) {
+      case 'start':
+        return start(state);
       case 'end':
         return end(state);
-        break;
       default:
         return game(state);
     }
