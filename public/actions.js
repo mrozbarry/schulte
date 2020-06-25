@@ -8,7 +8,7 @@ export const OnTileClick = (state, clickedTile) => {
   clickedTile.time = Date.now() - state.previousTime;
   state.previousTime = Date.now();
 
-  if (clickedTile.number === 25) {
+  if (clickedTile.number === Math.pow(state.gridSize, 2)) {
     state.view = 'end';
   }
 
@@ -21,12 +21,13 @@ export const OnTileClick = (state, clickedTile) => {
   };
 };
 
-export const resetGame = (state) => {
-    const gridSize = 5
+export const StartGame = (state, props = {}) => {
+    const gridSize = props.gridSize || 5
     const totalCells = Math.pow(gridSize, 2)
     return { 
       ...state, 
       previousTime: Date.now(),
+      gridSize,
       numbers: _.shuffle(Array.from({ length: totalCells }, (empty, index) => {
         return {
           number: index + 1,
@@ -40,4 +41,23 @@ export const resetGame = (state) => {
     }
 };
 
-export const StartGame = resetGame;
+export const Start = (state, props = {}) => {
+    const gridSize = props.gridSize || 5
+    const totalCells = Math.pow(gridSize, 2)
+    return { 
+      ...state, 
+      previousTime: Date.now(),
+      gridSize,
+      numbers: _.shuffle(Array.from({ length: totalCells }, (empty, index) => {
+        return {
+          number: index + 1,
+          time: null,
+          errors: 0,
+        }
+      })),
+      currentNumber: 1,
+      numberToHighlight: null,
+      view: 'start',
+    }
+};
+

@@ -9,8 +9,9 @@ export const start = (state) => h('form', {
       event.preventDefault();
       const formData = new FormData(event.target);
       const gridSize = formData.get('grid-size')
-      console.log(gridSize)
-      return {};
+      return {
+        gridSize,
+      };
     }
   ]
 }, [
@@ -19,6 +20,7 @@ export const start = (state) => h('form', {
     'Grid Size',
     h('input', {
       name: 'grid-size',
+      value: 5,
       class: 'shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline',
     }),
   ]),

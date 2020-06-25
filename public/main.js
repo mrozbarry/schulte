@@ -10,16 +10,18 @@ app({
 
   init: {
     previousTime: Date.now(),
+    gridSize: 5,
     numbers: _.shuffle(Array.from({ length: 25 }, (empty, index) => {
       return {
         number: index + 1,
-        time: null,
+        // time: null,
+        time: Math.random() * 10000,
         errors: 0,
       }
     })),
     currentNumber: 1,
     numberToHighlight: null,
-    view: 'start',
+    view: 'end',
   },
 
   view: (state) => {
